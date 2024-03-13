@@ -7,23 +7,22 @@ void setup() {
 }
 void loop() {
   if (Serial.available() > 0) {
-    String input = Serial.readStringUntil('\n');
-    if (input == "ON") {
+    // String input = Serial.readStringUntil('\n');
+   switch(input){
+     case 'ON' :
       Serial.println("Led ON");
       digitalWrite(led, HIGH);
-    } else if (input == "OFF") {
+     break;
+     case 'OFF' :
       Serial.println("Led OFF");
       digitalWrite(led, LOW);
-    } else if (input == "Blink") {
-      Serial.println("Đèn nhấp nháy.");
-      while (input == "Blink") {
-        digitalWrite(led, HIGH);
-        delay(2000);
-        digitalWrite(led, LOW);
-        delay(2000);
-      }
-    } else {
-      Serial.println("Bạn nhập sai.");
-    }
+     break;
+     case 'BLINK' :
+    digitalWrite(led, HIGH);
+     delay(2000);
+     digitalWrite(led,LOW);
+     delay(2000);
+     break;
+   }
   }
 }
